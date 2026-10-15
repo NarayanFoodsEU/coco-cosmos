@@ -1,0 +1,773 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#203E59">
+  <title>COCO COSMOS | A Little Taste of Paradise</title>
+  <meta name="description" content="Meet COCO COSMOS coconut water and coconut milk. Your little escape to paradise.">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --blue: #5C9EAD;
+      --navy: #203E59;
+      --pink: #DE9F9A;
+      --cream: #FFF9F4;
+      --white: #FFFFFF;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: "DM Sans", sans-serif;
+      color: var(--navy);
+      background: var(--cream);
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button {
+      font: inherit;
+      cursor: pointer;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* NAVIGATION */
+
+    .navbar {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 26px 7%;
+      color: white;
+    }
+
+    .brand {
+      font-family: "Outfit", sans-serif;
+      font-weight: 900;
+      font-size: 24px;
+      line-height: .85;
+      letter-spacing: -1px;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      font-weight: 700;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .nav-links a:hover {
+      color: var(--pink);
+    }
+
+    .nav-button {
+      background: var(--pink);
+      color: var(--navy);
+      padding: 13px 22px;
+      border-radius: 30px;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 100vh;
+      background: var(--navy);
+      color: white;
+      display: flex;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      padding: 140px 8% 90px;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 650px;
+      height: 650px;
+      background: var(--blue);
+      border-radius: 50%;
+      right: -120px;
+      top: 8%;
+      opacity: .65;
+      filter: blur(2px);
+    }
+
+    .hero::after {
+      content: "";
+      position: absolute;
+      width: 300px;
+      height: 300px;
+      border: 65px solid var(--pink);
+      border-radius: 50%;
+      left: -190px;
+      bottom: -140px;
+      opacity: .85;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      width: 55%;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 3px;
+      margin-bottom: 25px;
+    }
+
+    .hero h1 {
+      font-family: "Outfit", sans-serif;
+      font-size: clamp(65px, 9vw, 145px);
+      font-weight: 900;
+      line-height: .85;
+      letter-spacing: -6px;
+      text-transform: uppercase;
+    }
+
+    .hero h1 span {
+      color: var(--pink);
+    }
+
+    .hero-description {
+      font-size: 18px;
+      line-height: 1.7;
+      max-width: 440px;
+      margin: 35px 0;
+    }
+
+    .button {
+      display: inline-block;
+      border-radius: 50px;
+      padding: 17px 30px;
+      background: var(--pink);
+      color: var(--navy);
+      font-weight: 800;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      transition: transform .3s, background .3s;
+    }
+
+    .button:hover {
+      transform: translateY(-5px);
+      background: white;
+    }
+
+    .hero-product {
+      position: absolute;
+      z-index: 3;
+      right: 9%;
+      top: 50%;
+      transform: translateY(-45%);
+      width: 32%;
+      max-width: 420px;
+      filter: drop-shadow(20px 25px 20px rgba(0,0,0,.25));
+      animation: float 5s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(-45%);
+      }
+      50% {
+        transform: translateY(-49%);
+      }
+    }
+
+    /* MARQUEE */
+
+    .marquee {
+      background: var(--pink);
+      padding: 19px 0;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .marquee-track {
+      display: inline-block;
+      width: max-content;
+      animation: move 28s linear infinite;
+      font-family: "Outfit", sans-serif;
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: 2px;
+    }
+
+    @keyframes move {
+      to {
+        transform: translateX(-50%);
+      }
+    }
+
+    /* STORY */
+
+    .story {
+      padding: 120px 8%;
+      background: var(--cream);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: 8%;
+    }
+
+    .story-image {
+      position: relative;
+    }
+
+    .story-image img {
+      width: 100%;
+      border-radius: 180px 180px 25px 25px;
+      object-fit: cover;
+      min-height: 420px;
+    }
+
+    .story-content h2,
+    .section-title {
+      font-family: "Outfit", sans-serif;
+      font-size: clamp(45px, 6vw, 85px);
+      font-weight: 900;
+      line-height: .95;
+      letter-spacing: -3px;
+      text-transform: uppercase;
+    }
+
+    .story-content h2 span {
+      color: var(--blue);
+    }
+
+    .story-content p {
+      margin-top: 25px;
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    /* PRODUCTS */
+
+    .products {
+      padding: 110px 8%;
+      background: var(--blue);
+      text-align: center;
+    }
+
+    .products .eyebrow {
+      color: white;
+    }
+
+    .section-title {
+      color: white;
+      margin-bottom: 60px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 28px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .product-card {
+      border-radius: 25px;
+      padding: 45px 25px;
+      overflow: hidden;
+      transition: transform .35s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-10px);
+    }
+
+    .water-card {
+      background: #D7EFF4;
+    }
+
+    .milk-card {
+      background: #F3C4C4;
+    }
+
+    .product-card img {
+      height: 350px;
+      width: 100%;
+      object-fit: contain;
+      margin: 0 auto 30px;
+      transition: transform .4s;
+    }
+
+    .product-card:hover img {
+      transform: scale(1.06) rotate(-2deg);
+    }
+
+    .product-card h3 {
+      font-family: "Outfit", sans-serif;
+      font-size: 34px;
+      font-weight: 900;
+      text-transform: uppercase;
+    }
+
+    .product-card p {
+      margin: 12px auto 0;
+      max-width: 300px;
+      line-height: 1.6;
+    }
+
+    /* BRAND BANNER */
+
+    .banner {
+      background: var(--pink);
+      text-align: center;
+      padding: 110px 8%;
+    }
+
+    .banner h2 {
+      font-family: "Outfit", sans-serif;
+      font-size: clamp(48px, 8vw, 110px);
+      font-weight: 900;
+      line-height: .95;
+      letter-spacing: -4px;
+      text-transform: uppercase;
+    }
+
+    .banner p {
+      margin: 25px auto 0;
+      max-width: 600px;
+      font-size: 18px;
+      line-height: 1.7;
+    }
+
+    /* CONTACT */
+
+    .contact {
+      background: var(--cream);
+      padding: 100px 8%;
+      text-align: center;
+    }
+
+    .contact h2 {
+      font-family: "Outfit", sans-serif;
+      font-size: clamp(45px, 7vw, 90px);
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1;
+    }
+
+    .contact p {
+      margin: 25px auto 35px;
+      max-width: 550px;
+      line-height: 1.7;
+    }
+
+    .contact .button {
+      background: var(--navy);
+      color: white;
+    }
+
+    /* FOOTER */
+
+    footer {
+      background: var(--navy);
+      color: white;
+      padding: 45px 8%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 25px;
+    }
+
+    footer .brand {
+      font-size: 30px;
+    }
+
+    footer p {
+      font-size: 13px;
+      opacity: .75;
+    }
+
+    /* SCROLL ANIMATION */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity .8s, transform .8s;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 768px) {
+      .navbar {
+        padding: 22px 6%;
+      }
+
+      .nav-links {
+        gap: 15px;
+        font-size: 11px;
+      }
+
+      .nav-links a:not(.nav-button) {
+        display: none;
+      }
+
+      .hero {
+        min-height: 850px;
+        padding: 125px 7% 80px;
+        align-items: flex-start;
+      }
+
+      .hero-content {
+        width: 100%;
+      }
+
+      .hero h1 {
+        font-size: clamp(60px, 14vw, 100px);
+        letter-spacing: -3px;
+      }
+
+      .hero-description {
+        font-size: 15px;
+        max-width: 310px;
+      }
+
+      .hero-product {
+        width: 55%;
+        right: 5%;
+        top: 74%;
+        max-width: 270px;
+      }
+
+      .hero::before {
+        width: 380px;
+        height: 380px;
+        top: 48%;
+      }
+
+      .story {
+        grid-template-columns: 1fr;
+        padding: 80px 7%;
+      }
+
+      .story-image img {
+        min-height: 280px;
+      }
+
+      .products {
+        padding: 80px 6%;
+      }
+
+      .product-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .product-card img {
+        height: 300px;
+      }
+
+      .banner {
+        padding: 80px 7%;
+      }
+
+      footer {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+
+      html {
+        scroll-behavior: auto;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVIGATION -->
+
+  <header class="navbar">
+    <a class="brand" href="#home" aria-label="COCO COSMOS Home">
+      COCO<br>COSMOS
+    </a>
+
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="#story">Our Story</a>
+      <a href="#products">Products</a>
+      <a href="#contact" class="nav-button">Say Hello</a>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+
+  <main>
+    <section class="hero" id="home">
+
+      <div class="hero-content">
+        <p class="eyebrow">Welcome to the Coco Universe</p>
+
+        <h1>
+          SIP<br>
+          INTO<br>
+          <span>PARADISE.</span>
+        </h1>
+
+        <p class="hero-description">
+          A little sunshine. A little coconut.
+          A whole lot of good vibes.
+          Discover the refreshing world of COCO COSMOS.
+        </p>
+
+        <a href="#products" class="button">
+          Explore Our Products &rarr;
+        </a>
+      </div>
+
+      <img
+        src="assets/water.png"
+        alt="COCO COSMOS coconut water packaging"
+        class="hero-product"
+      >
+
+    </section>
+
+    <!-- MOVING TEXT -->
+
+    <div class="marquee" aria-label="COCO COSMOS - Sip into paradise">
+      <div class="marquee-track" aria-hidden="true">
+        COCO COSMOS ✳ SIP INTO PARADISE ✳ GOOD VIBES ONLY ✳
+        COCO COSMOS ✳ SIP INTO PARADISE ✳ GOOD VIBES ONLY ✳
+        COCO COSMOS ✳ SIP INTO PARADISE ✳ GOOD VIBES ONLY ✳
+        COCO COSMOS ✳ SIP INTO PARADISE ✳ GOOD VIBES ONLY ✳
+      </div>
+    </div>
+
+    <!-- OUR STORY -->
+
+    <section class="story" id="story">
+
+      <div class="story-image reveal">
+        <img
+          src="assets/lifestyle.png"
+          alt="COCO COSMOS coconut water and coconut milk on a kitchen counter"
+          loading="lazy"
+        >
+      </div>
+
+      <div class="story-content reveal">
+        <p class="eyebrow">The Coco Way</p>
+
+        <h2>
+          LIFE IS<br>
+          BETTER<br>
+          <span>WITH COCO.</span>
+        </h2>
+
+        <p>
+          Welcome to COCO COSMOS — a playful little
+          universe inspired by coconuts, sunshine,
+          and all things refreshing.
+        </p>
+
+        <p>
+          From a refreshing coconut water break
+          to a creamy coconut milk moment,
+          we're bringing tropical energy into
+          your everyday routine.
+        </p>
+
+        <p>
+          Because sometimes, paradise is just
+          one sip away.
+        </p>
+      </div>
+
+    </section>
+
+    <!-- PRODUCTS -->
+
+    <section class="products" id="products">
+
+      <p class="eyebrow reveal">Meet the Coco Family</p>
+
+      <h2 class="section-title reveal">
+        PICK YOUR<br>PARADISE.
+      </h2>
+
+      <div class="product-grid">
+
+        <article class="product-card water-card reveal">
+          <img
+            src="assets/water.png"
+            alt="COCO COSMOS Coconut Water 200 mL"
+            loading="lazy"
+          >
+
+          <h3>Coconut Water</h3>
+
+          <p>
+            Your tropical refreshment companion.
+            Made for those little moments when
+            you need a refreshing break.
+          </p>
+        </article>
+
+        <article class="product-card milk-card reveal">
+          <img
+            src="assets/milk.png"
+            alt="COCO COSMOS Coconut Milk 200 mL"
+            loading="lazy"
+          >
+
+          <h3>Coconut Milk</h3>
+
+          <p>
+            Creamy, smooth, and ready to bring
+            a little coconut magic to your
+            cooking and beverages.
+          </p>
+        </article>
+
+      </div>
+
+    </section>
+
+    <!-- BRAND MESSAGE -->
+
+    <section class="banner">
+      <div class="reveal">
+        <p class="eyebrow">Welcome to Our Universe</p>
+
+        <h2>
+          STAY COOL.<br>
+          GO COCO.
+        </h2>
+
+        <p>
+          Tropical energy, playful spirit,
+          and delicious coconut moments.
+          That's the COCO COSMOS way.
+        </p>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+
+    <section class="contact" id="contact">
+      <div class="reveal">
+
+        <p class="eyebrow">Let's Connect</p>
+
+        <h2>
+          HELLO,<br>
+          COCO LOVER!
+        </h2>
+
+        <p>
+          Have a question, an idea, or want to
+          collaborate? We'd love to hear from you.
+        </p>
+
+        <!-- Replace the email address with your real contact email -->
+        <a
+          href="mailto:hello@example.com"
+          class="button"
+        >
+          Get in Touch &rarr;
+        </a>
+
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+
+  <footer>
+    <a href="#home" class="brand">
+      COCO<br>COSMOS
+    </a>
+
+    <p>© <span id="year"></span> COCO COSMOS. All rights reserved.</p>
+
+    <p>Sip Into Paradise ✳</p>
+  </footer>
+
+  <script>
+    // Update copyright year
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+    // Animate sections when they enter the screen
+    const revealElements =
+      document.querySelectorAll(".reveal");
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12 }
+      );
+
+      revealElements.forEach((element) => {
+        observer.observe(element);
+      });
+    } else {
+      revealElements.forEach((element) => {
+        element.classList.add("visible");
+      });
+    }
+  </script>
+
+</body>
+</html>
