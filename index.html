@@ -306,19 +306,306 @@ nav {
 .nutrition-note { font-size: .75rem; opacity: .8; }
 
 /* RECIPES */
-.recipe-grid {
+
+/* ===================================
+   COCO COSMOS - RECIPE SHOWCASE
+=================================== */
+
+.recipes-section {
+  background: #fff8ed;
+  overflow: hidden;
+}
+
+.recipes-section .recipe-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 7%;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 6%;
   align-items: center;
 }
-.recipe-grid img {
-  width: 100%;
-  height: 490px;
-  object-fit: cover;
-  border-radius: 40% 20% 35% 15%;
+
+.recipe-showcase {
+  position: relative;
+  min-height: 490px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  isolation: isolate;
 }
-.recipe-copy { max-width: 440px; }
+
+/* ORGANIC GREEN BACKGROUND */
+.recipe-blob {
+  position: absolute;
+  width: 108%;
+  height: 85%;
+  background: #dce5b4;
+  border-radius: 43% 57% 54% 46% /
+                 52% 41% 59% 48%;
+  z-index: -1;
+  animation: blobMove 9s ease-in-out infinite;
+}
+
+@keyframes blobMove {
+  0%, 100% {
+    transform: rotate(-3deg) scale(1);
+    border-radius: 43% 57% 54% 46% /
+                   52% 41% 59% 48%;
+  }
+  50% {
+    transform: rotate(3deg) scale(1.035);
+    border-radius: 55% 45% 44% 56% /
+                   43% 58% 42% 57%;
+  }
+}
+
+/* RECIPE CARD LAYOUT */
+.recipe-cards {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 30px 5px;
+}
+
+.recipe-card {
+  --rotation: 0deg;
+
+  flex: 0 0 27%;
+  min-width: 0;
+  background: #fff9ed;
+  border-radius: 15px;
+  padding: 16px 12px 20px;
+  text-align: center;
+  box-shadow: 0 12px 25px rgba(30,60,40,.14);
+
+  position: relative;
+  transform: rotate(var(--rotation));
+  transition:
+    transform .4s ease,
+    box-shadow .4s ease;
+
+  cursor: default;
+}
+
+.recipe-card:not(:first-child) {
+  margin-left: -13px;
+}
+
+.recipe-card:nth-child(1) {
+  --rotation: -12deg;
+  z-index: 1;
+}
+
+.recipe-card:nth-child(2) {
+  --rotation: -4deg;
+  z-index: 2;
+}
+
+.recipe-card:nth-child(3) {
+  --rotation: 5deg;
+  z-index: 3;
+}
+
+.recipe-card:nth-child(4) {
+  --rotation: 12deg;
+  z-index: 4;
+}
+
+/* FUN HOVER ANIMATION */
+.recipe-card:hover {
+  transform: translateY(-25px)
+             rotate(0deg)
+             scale(1.08);
+  box-shadow: 0 25px 40px rgba(30,60,40,.2);
+  z-index: 10;
+}
+
+/* RECIPE IMAGES */
+.recipe-photo {
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.recipe-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform .4s ease;
+}
+
+.recipe-card:hover img {
+  transform: scale(1.12);
+}
+
+/* CARD TYPOGRAPHY */
+.recipe-card h3 {
+  font-family: 'DM Sans', sans-serif;
+  color: #034b60;
+  font-size: clamp(.75rem, 1.1vw, 1.05rem);
+  line-height: 1.15;
+  font-weight: 900;
+  margin-bottom: 12px;
+}
+
+.recipe-card p {
+  color: #034b60;
+  font-size: .72rem;
+  line-height: 1.4;
+  min-height: 55px;
+}
+
+/* COLORED UNDERLINES */
+.recipe-line {
+  display: block;
+  width: 55%;
+  height: 5px;
+  border-radius: 10px;
+  margin: 12px auto 0;
+}
+
+.recipe-line.green { background: #b3ca66; }
+.recipe-line.pink { background: #ff7597; }
+.recipe-line.brown { background: #a96d48; }
+.recipe-line.yellow { background: #f2c76e; }
+
+/* DECORATIVE SPARKLES */
+.recipe-decoration {
+  position: absolute;
+  color: #ff6086;
+  font-size: 4rem;
+  animation: sparkle 4s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.decoration-left {
+  top: 0;
+  left: 3%;
+}
+
+.decoration-right {
+  bottom: 4%;
+  right: 2%;
+  animation-delay: 1.5s;
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    transform: rotate(-15deg) scale(1);
+  }
+  50% {
+    transform: rotate(15deg) scale(1.15);
+  }
+}
+
+/* RIGHT TEXT */
+.recipes-section .recipe-copy h2 {
+  font-size: clamp(3rem, 5vw, 5.6rem);
+  margin: 15px 0 35px;
+}
+
+.recipes-section .recipe-copy p {
+  max-width: 430px;
+  margin-bottom: 28px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 1000px) {
+  .recipes-section .recipe-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+
+  .recipe-showcase {
+    min-height: 420px;
+  }
+
+  .recipe-copy {
+    text-align: center;
+    margin: auto;
+  }
+
+  .recipes-section .recipe-copy p {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .recipe-card h3 {
+    font-size: .95rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .recipe-showcase {
+    min-height: 350px;
+  }
+
+  .recipe-blob {
+    width: 115%;
+    height: 90%;
+  }
+
+  .recipe-card {
+    flex-basis: 28%;
+    padding: 10px 7px 13px;
+    border-radius: 10px;
+  }
+
+  .recipe-card:not(:first-child) {
+    margin-left: -10px;
+  }
+
+  .recipe-photo {
+    height: 85px;
+    margin-bottom: 8px;
+  }
+
+  .recipe-card h3 {
+    font-size: .65rem;
+  }
+
+  .recipe-card p {
+    font-size: .55rem;
+    min-height: 60px;
+  }
+
+  .recipe-decoration {
+    font-size: 2.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .recipe-blob,
+  .recipe-decoration {
+    animation: none;
+  }
+}
+
+/* RECIPE SECTION LAYERING FIX */
+
+.recipe-blob {
+  z-index: 0;
+}
+
+.recipe-cards {
+  position: relative;
+  z-index: 2;
+}
+
+.recipe-decoration {
+  z-index: 3;
+}
+
+/* Prevent old mobile image rule from affecting cards */
+@media (max-width: 800px) {
+  .recipe-photo img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+}
+
 
 /* CONTACT */
 .contact {
@@ -390,7 +677,6 @@ footer {
   .story-grid,.recipe-grid,.contact-grid { grid-template-columns: 1fr; }
   .product-grid { grid-template-columns: 1fr; max-width: 440px; margin: auto; }
   .nutrition-grid { grid-template-columns: 1fr; }
-  .recipe-grid img { height: 350px; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
 @media(max-width:480px) {
@@ -557,19 +843,91 @@ footer {
 </section>
 
 <!-- RECIPES -->
-<section class="section" id="recipes">
+<section class="section recipes-section" id="recipes">
   <div class="container recipe-grid">
-    <div class="reveal">
-      <img src="assets/iced-coconut-coffee.webp" alt="Coconut milk poured into iced coffee" loading="lazy">
+
+    <!-- LEFT: ANIMATED RECIPE CARDS -->
+    <div class="recipe-showcase reveal">
+
+      <div class="recipe-blob"></div>
+
+      <span class="recipe-decoration decoration-left">✳</span>
+      <span class="recipe-decoration decoration-right">✳</span>
+
+      <div class="recipe-cards">
+
+        <article class="recipe-card">
+          <div class="recipe-photo">
+            <img src="assets/recipe-matcha.webp"
+                 alt="Coconut matcha latte"
+                 loading="lazy">
+          </div>
+          <h3>COCONUT<br>MATCHA</h3>
+          <p>Matcha meets creamy coconut goodness.</p>
+          <span class="recipe-line green"></span>
+        </article>
+
+        <article class="recipe-card">
+          <div class="recipe-photo">
+            <img src="assets/recipe-smoothie.webp"
+                 alt="Strawberry coconut smoothie"
+                 loading="lazy">
+          </div>
+          <h3>BERRY<br>COCONUT</h3>
+          <p>A fruity, refreshing tropical blend.</p>
+          <span class="recipe-line pink"></span>
+        </article>
+
+        <article class="recipe-card">
+          <div class="recipe-photo">
+            <img src="assets/recipe-coffee.webp"
+                 alt="Iced coconut coffee"
+                 loading="lazy">
+          </div>
+          <h3>COCONUT<br>COFFEE</h3>
+          <p>Your favorite iced coffee, coconut style.</p>
+          <span class="recipe-line brown"></span>
+        </article>
+
+        <article class="recipe-card">
+          <div class="recipe-photo">
+            <img src="assets/recipe-chia.webp"
+                 alt="Coconut chia pudding"
+                 loading="lazy">
+          </div>
+          <h3>COCONUT<br>CHIA</h3>
+          <p>Simple, creamy and delicious.</p>
+          <span class="recipe-line yellow"></span>
+        </article>
+
+      </div>
     </div>
+
+    <!-- RIGHT: TEXT -->
     <div class="recipe-copy reveal">
-      <div class="eyebrow">Get inspired</div>
-      <h2>POUR. MIX.<br>SIP. REPEAT. <span class="scribble">✳</span></h2>
-      <p>From refreshing drinks to creamy meals and tasty treats – discover simple ways to enjoy the goodness of coconut every day.</p>
-      <a class="btn btn-pink" href="#contact">ASK US FOR RECIPES →</a>
+      <div class="eyebrow">GET INSPIRED</div>
+
+      <h2>
+        POUR. MIX.<br>
+        SIP.<br>
+        REPEAT.
+        <span class="scribble">✳</span>
+      </h2>
+
+      <p>
+        From refreshing drinks to creamy treats,
+        discover delicious ways to enjoy
+        coconut goodness every day.
+      </p>
+
+      <a class="btn btn-pink" href="#contact">
+        EXPLORE RECIPES →
+      </a>
     </div>
+
   </div>
 </section>
+
 
 <!-- CONTACT -->
 <section class="section contact" id="contact">
