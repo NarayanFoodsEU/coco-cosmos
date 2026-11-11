@@ -785,7 +785,6 @@ footer {
 ================================== */
 
 /* Smooth animation for both card types */
-.product-card,
 .recipe-card {
   transition:
     transform 0.4s cubic-bezier(.2,.8,.2,1),
@@ -795,16 +794,6 @@ footer {
 
 /* Mobile touch interaction */
 @media (hover: none) and (pointer: coarse) {
-
-  /* Product card animation */
-  .product-card.is-active {
-    transform: translateY(-14px) scale(1.035);
-    box-shadow: 0 22px 35px rgba(3,75,96,.18);
-  }
-
-  .product-card.is-active img {
-    transform: scale(1.08) rotate(3deg);
-  }
 
   /* Recipe card animation */
   .recipe-card.is-active {
@@ -822,10 +811,7 @@ footer {
   }
 
   /* Prevent sticky hover effects */
-  .product-card:hover {
-    transform: none;
-    box-shadow: none;
-  }
+
 
   .recipe-card:hover {
     transform: rotate(var(--rotation));
@@ -867,6 +853,220 @@ footer {
   }
 }
 
+/* ===================================
+   COCO COSMOS PRODUCT CAROUSEL
+=================================== */
+
+.product-carousel {
+  position: relative;
+  width: 100%;
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 45px 55px;
+}
+
+.product-carousel-track {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 22px;
+  min-height: 530px;
+  perspective: 1000px;
+}
+
+.product-carousel .product-card {
+  flex: 0 0 calc((100% - 44px) / 3);
+  min-width: 0;
+  position: relative;
+  padding: 35px 20px;
+  border-radius: 95px 95px 40px 40px;
+  text-align: center;
+  background: #b9e9eb;
+
+  transform: scale(.86);
+  opacity: .72;
+
+  transition:
+    transform .55s cubic-bezier(.2,.8,.2,1),
+    opacity .55s ease,
+    box-shadow .55s ease,
+    background .55s ease;
+}
+
+.product-carousel .product-card:nth-child(2) {
+  background: #ffd4de;
+}
+
+.product-carousel .product-card:nth-child(3) {
+  background: #ffe3e3;
+}
+
+.product-carousel .product-card.is-center {
+  transform: scale(1.13);
+  opacity: 1;
+  z-index: 5;
+  box-shadow: 0 22px 45px rgba(3,75,96,.16);
+}
+
+.product-carousel .product-card img {
+  width: 100%;
+  height: 285px;
+  object-fit: contain;
+  transition: transform .55s ease;
+}
+
+.product-carousel .product-card.is-center img {
+  transform: scale(1.12);
+}
+
+.product-carousel .product-card h3 {
+  margin: 16px 0 8px;
+  font-size: 1.25rem;
+}
+
+.product-carousel .product-card p {
+  font-size: .95rem;
+  line-height: 1.45;
+}
+
+.carousel-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  border: 2px solid #034b60;
+  background: #fff8ed;
+  color: #034b60;
+  font-size: 1.8rem;
+  transition: background .3s, transform .3s;
+}
+
+.carousel-arrow:hover {
+  background: #034b60;
+  color: white;
+  transform: translateY(-50%) scale(1.08);
+}
+
+.carousel-prev { left: 0; }
+.carousel-next { right: 0; }
+
+/* MOBILE */
+@media (max-width: 700px) {
+  .product-carousel {
+    padding: 30px 0 70px;
+  }
+
+  .product-carousel-track {
+    position: relative;
+    height: 430px;
+    min-height: 0;
+    gap: 0;
+    overflow: hidden;
+  }
+
+  .product-carousel .product-card {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 70%;
+    max-width: 300px;
+    padding: 25px 15px;
+    flex: none;
+  }
+
+  .product-carousel .product-card img {
+    height: 220px;
+  }
+
+  .product-carousel .product-card.is-center {
+    transform: translate(-50%,-50%) scale(1);
+  }
+
+  .product-carousel .product-card.is-left {
+    transform: translate(-125%,-50%) scale(.75);
+    opacity: .6;
+  }
+
+  .product-carousel .product-card.is-right {
+    transform: translate(25%,-50%) scale(.75);
+    opacity: .6;
+  }
+
+  .carousel-arrow {
+    top: auto;
+    bottom: 0;
+    transform: none;
+    width: 46px;
+    height: 46px;
+  }
+
+  .carousel-arrow:hover {
+    transform: none;
+  }
+
+  .carousel-prev { left: 30%; }
+  .carousel-next { right: 30%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .product-carousel .product-card {
+    transition: none;
+  }
+}
+
+  .product-carousel .product-card:hover {
+  transform: scale(.86);
+}
+.product-carousel .product-card.is-center:hover {
+  transform: scale(1.13);
+}
+@media (max-width: 700px) {
+  .product-carousel .product-card.is-center:hover {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  .product-carousel .product-card.is-left:hover {
+    transform: translate(-125%, -50%) scale(.75);
+  }
+  .product-carousel .product-card.is-right:hover {
+    transform: translate(25%, -50%) scale(.75);
+  }
+}
+
+  
+/* FINAL PRODUCT CAROUSEL FIXES */
+
+@media (max-width: 700px) {
+
+  .product-carousel .product-card.is-center,
+  .product-carousel .product-card.is-center:hover {
+    transform: translate(-50%, -50%) scale(1);
+    opacity: 1;
+    z-index: 5;
+  }
+
+  .product-carousel .product-card.is-left,
+  .product-carousel .product-card.is-left:hover {
+    transform: translate(-125%, -50%) scale(.75);
+    opacity: .6;
+    z-index: 2;
+  }
+
+  .product-carousel .product-card.is-right,
+  .product-carousel .product-card.is-right:hover {
+    transform: translate(25%, -50%) scale(.75);
+    opacity: .6;
+    z-index: 2;
+  }
+
+  .product-carousel .product-card {
+    transition: transform .55s ease, opacity .55s ease;
+  }
+}
+
+  
 </style>
 </head>
 
@@ -988,23 +1188,48 @@ footer {
       <div class="eyebrow">Meet our products</div>
       <h2>PICK YOUR<br>COCONUT MOOD. <span class="scribble" aria-hidden="true">✳︎</span></h2>
     </div>
-    <div class="product-grid">
-      <article class="product-card reveal">
-        <img src="assets/product-water.png" alt="Coco Cosmos Coconut Water" loading="lazy">
-        <h3>COCONUT WATER</h3>
-        <p>Naturally refreshing coconut goodness for your everyday moments.</p>
-      </article>
-      <article class="product-card reveal">
-        <img src="assets/product-milk.png" alt="Coco Cosmos Coconut Milk" loading="lazy">
-        <h3>COCONUT MILK</h3>
-        <p>Smooth, creamy and perfect for everyday recipes.</p>
-      </article>
-      <article class="product-card reveal">
-        <img src="assets/product-oil.png" alt="Coco Cosmos Coconut Oil" loading="lazy">
-        <h3>COCONUT OIL</h3>
-        <p>A versatile coconut oil for cooking, baking and more.</p>
-      </article>
-    </div>
+
+<div class="product-carousel reveal" id="productCarousel">
+
+  <button class="carousel-arrow carousel-prev"
+          type="button"
+          aria-label="Previous product">
+    &#8592;
+  </button>
+
+  <div class="product-carousel-track">
+
+    <article class="product-card">
+      <img src="assets/product-water.png"
+           alt="Coco Cosmos Coconut Water">
+      <h3>COCONUT WATER</h3>
+      <p>Naturally refreshing coconut goodness for your everyday moments.</p>
+    </article>
+
+    <article class="product-card">
+      <img src="assets/product-milk.png"
+           alt="Coco Cosmos Coconut Milk">
+      <h3>COCONUT MILK</h3>
+      <p>Smooth, creamy and perfect for everyday recipes.</p>
+    </article>
+
+    <article class="product-card">
+      <img src="assets/product-oil.png"
+           alt="Coco Cosmos Coconut Oil">
+      <h3>COCONUT OIL</h3>
+      <p>A versatile coconut oil for cooking, baking and more.</p>
+    </article>
+
+  </div>
+
+  <button class="carousel-arrow carousel-next"
+          type="button"
+          aria-label="Next product">
+    &#8594;
+  </button>
+
+</div>
+
   </div>
 </section>
 
@@ -1229,7 +1454,7 @@ document.getElementById('contactForm').addEventListener('submit', event => {
 // ======================================
 
 const animatedCards = document.querySelectorAll(
-  '.product-card, .recipe-card'
+  '.recipe-card'
 );
 
 const isTouchDevice = window.matchMedia(
@@ -1282,6 +1507,86 @@ if (isTouchDevice.matches && !prefersReducedMotion.matches) {
       cardObserver.observe(card);
     });
   }
+}
+
+  
+// ====================================
+// COCO COSMOS PRODUCT CAROUSEL
+// ====================================
+
+const productCarousel = document.getElementById('productCarousel');
+
+if (productCarousel) {
+  const cards = Array.from(
+    productCarousel.querySelectorAll('.product-card')
+  );
+
+  const previousButton =
+    productCarousel.querySelector('.carousel-prev');
+
+  const nextButton =
+    productCarousel.querySelector('.carousel-next');
+
+  let activeIndex = 1;
+  let touchStartX = 0;
+
+  function updateProductCarousel() {
+    const count = cards.length;
+
+    cards.forEach((card, index) => {
+      const relative = (index - activeIndex + count) % count;
+
+      card.classList.remove('is-left', 'is-center', 'is-right');
+
+      if (relative === 0) {
+        card.classList.add('is-center');
+      } else if (relative === 1) {
+        card.classList.add('is-right');
+      } else {
+        card.classList.add('is-left');
+      }
+    });
+
+    // Reorder desktop cards visually
+    cards.forEach((card, index) => {
+      const relative = (index - activeIndex + cards.length) % cards.length;
+      card.style.order = relative === 2 ? 0 : relative === 0 ? 1 : 2;
+    });
+  }
+
+  function moveCarousel(direction) {
+    activeIndex = (activeIndex + direction + cards.length) % cards.length;
+    updateProductCarousel();
+  }
+
+  previousButton.addEventListener('click', () => moveCarousel(-1));
+  nextButton.addEventListener('click', () => moveCarousel(1));
+
+  // Swipe support for mobile
+  productCarousel.addEventListener('touchstart', event => {
+    touchStartX = event.changedTouches[0].screenX;
+  }, { passive: true });
+
+  productCarousel.addEventListener('touchend', event => {
+    const touchEndX = event.changedTouches[0].screenX;
+    const difference = touchEndX - touchStartX;
+
+    if (Math.abs(difference) > 45) {
+      moveCarousel(difference < 0 ? 1 : -1);
+    }
+  }, { passive: true });
+
+  // Click side cards to bring them to center
+  cards.forEach((card, index) => {
+    card.addEventListener('click', () => {
+      if (index !== activeIndex) {
+        activeIndex = index;
+        updateProductCarousel();
+      }
+    });
+  });
+
+  updateProductCarousel();
 }
 
 </script>
