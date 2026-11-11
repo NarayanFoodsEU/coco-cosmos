@@ -842,7 +842,31 @@ footer {
     transition: none !important;
   }
 }
+
   
+/* CONSISTENT PINK STARS ON MOBILE */
+
+.scribble,
+.recipe-decoration {
+  font-family: Arial, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  color: #ff6086;
+  font-variant-emoji: text;
+}
+
+.scribble {
+  display: inline-block;
+  line-height: 1;
+}
+
+@media (max-width: 600px) {
+  .scribble {
+    font-size: 0.75em;
+    vertical-align: middle;
+  }
+}
+
 </style>
 </head>
 
@@ -929,7 +953,7 @@ footer {
 </div>
 
     <div class="story-copy reveal">
-      <h2>A TASTE FROM<br>SOMEWHERE<br>SUNNY. <span class="scribble">✳</span></h2>
+      <h2>A TASTE FROM<br>SOMEWHERE<br>SUNNY. <span class="scribble" aria-hidden="true">✳︎</span></h2>
       <p>Our coconuts come from the tropical island of Mindanao in the Philippines, where sunshine and a warm climate help create delicious coconut goodness.</p>
       <a class="btn btn-outline" href="#contact">OUR STORY →</a>
     </div>
@@ -962,7 +986,7 @@ footer {
   <div class="container">
     <div class="center reveal">
       <div class="eyebrow">Meet our products</div>
-      <h2>PICK YOUR<br>COCONUT MOOD. <span class="scribble">✳</span></h2>
+      <h2>PICK YOUR<br>COCONUT MOOD. <span class="scribble" aria-hidden="true">✳︎</span></h2>
     </div>
     <div class="product-grid">
       <article class="product-card reveal">
@@ -988,7 +1012,7 @@ footer {
 <section class="section" id="nutrition">
   <div class="container nutrition-grid">
     <div class="reveal">
-      <h2>NUTRITIONAL<br>FACTS <span class="scribble">✳</span></h2>
+      <h2>NUTRITIONAL<br>FACTS <span class="scribble" aria-hidden="true">✳︎</span></h2>
       <p>Discover what's inside your favorite coconut products.</p>
       <p class="nutrition-note">Nutrition data will be added after verification against the approved product specifications.</p>
     </div>
@@ -1028,8 +1052,8 @@ footer {
 
       <div class="recipe-blob"></div>
 
-      <span class="recipe-decoration decoration-left">✳</span>
-      <span class="recipe-decoration decoration-right">✳</span>
+      <span class="recipe-decoration decoration-left"  aria-hidden="true">✳</span>
+      <span class="recipe-decoration decoration-right"  aria-hidden="true">✳</span>
 
       <div class="recipe-cards">
 
@@ -1088,7 +1112,7 @@ footer {
         POUR. MIX.<br>
         SIP.<br>
         REPEAT.
-        <span class="scribble">✳</span>
+        <span class="scribble" aria-hidden="true">✳︎</span>
       </h2>
 
       <p>
@@ -1111,7 +1135,7 @@ footer {
   <div class="container contact-grid">
     <div class="reveal">
       <div class="eyebrow">Get in touch</div>
-      <h2>LET'S<br>CONNECT. <span class="scribble">✳</span></h2>
+      <h2>LET'S<br>CONNECT. <span class="scribble" aria-hidden="true">✳︎</span></h2>
       <p>Have a question, a partnership idea or just want to know more about Coco Cosmos? We'd love to hear from you!</p>
     </div>
     <form id="contactForm" class="reveal">
