@@ -722,6 +722,62 @@ footer {
   }
 }
 
+
+/* FLOATING HERO BACKGROUND TYPOGRAPHY */
+
+.hero-background-text {
+  position: absolute;
+  top: 12%;
+  right: 2%;
+  width: 48%;
+  z-index: 1;
+  pointer-events: none;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  font-family: 'Kalam', cursive;
+  font-size: clamp(3rem, 5.5vw, 7rem);
+  font-weight: 700;
+  line-height: 1.1;
+  text-align: center;
+  color: #034b60;
+  opacity: 0.10;
+
+  transform: rotate(-9deg);
+  animation: heroTextDrift 10s ease-in-out infinite;
+}
+
+.hero-background-text span {
+  white-space: nowrap;
+}
+
+@keyframes heroTextDrift {
+  0%, 100% {
+    transform: translate(0, 0) rotate(-9deg);
+  }
+
+  50% {
+    transform: translate(-15px, 10px) rotate(-6deg);
+  }
+}
+
+@media (max-width: 800px) {
+  .hero-background-text {
+    top: 45%;
+    right: 0;
+    width: 75%;
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    opacity: 0.08;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-background-text {
+    animation: none;
+  }
+}
   
 </style>
 </head>
@@ -756,6 +812,13 @@ footer {
       <a class="btn btn-pink" href="#products">EXPLORE OUR PRODUCTS →</a>
     </div>
   </div>
+
+<div class="hero-background-text" aria-hidden="true">
+  <span>COCONUT</span>
+  <span>STATE OF</span>
+  <span>MIND.</span>
+</div>
+
   <img class="hero-woman" src="assets/hero-woman.png" alt="Woman enjoying Coco Cosmos coconut water">
   <div class="hero-wave"></div>
 </section>
