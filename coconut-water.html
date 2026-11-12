@@ -1,1 +1,1128 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#bceaf3">
+  <meta name="description" content="Discover Coco Cosmos Coconut Water, tropical refreshment from Mindanao, Philippines.">
+
+  <title>Coconut Water | Coco Cosmos</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --teal: #034b60;
+      --aqua: #bceaf3;
+      --pink: #ff6086;
+      --cream: #fff8ed;
+    }
+
+    * { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: 'DM Sans', sans-serif;
+      color: var(--teal);
+      background: var(--cream);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button { font: inherit; }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    /* HEADER */
+
+    .site-header {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      padding: 22px clamp(22px, 5vw, 88px);
+    }
+
+    .brand {
+      font-family: 'Kalam', cursive;
+      font-size: 29px;
+      font-weight: 700;
+      line-height: .76;
+      letter-spacing: -2px;
+      transform: rotate(-7deg);
+      position: relative;
+    }
+
+    .brand::after {
+      content: '';
+      position: absolute;
+      inset: -10px -14px;
+      border: 5px solid var(--pink);
+      border-radius: 52% 44% 53% 42%;
+      transform: rotate(12deg);
+      pointer-events: none;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: clamp(18px, 3vw, 50px);
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .nav-links a:hover,
+    .footer-links a:hover {
+      color: var(--pink);
+    }
+
+    .nav-cta {
+      background: var(--pink);
+      color: white;
+      padding: 12px 23px;
+      border-radius: 99px;
+      font-weight: 800;
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: 0;
+      font-size: 26px;
+      color: var(--teal);
+      cursor: pointer;
+    }
+
+    /* HERO */
+
+    .hero {
+      min-height: 760px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 110px 20px 65px;
+      background:
+        radial-gradient(
+          ellipse at 50% 48%,
+          #efffff 0%,
+          #b5f0f7 48%,
+          #9fe2ed 100%
+        );
+    }
+
+    .hero-scene {
+      position: relative;
+      width: min(940px, 100%);
+      height: 490px;
+      isolation: isolate;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .hero-scene::after {
+      content: '';
+      position: absolute;
+      width: 56%;
+      height: 30px;
+      bottom: 5px;
+      left: 22%;
+      background: rgba(3, 75, 96, .14);
+      filter: blur(18px);
+      border-radius: 50%;
+      z-index: 0;
+    }
+
+    .hero-product {
+      position: relative;
+      z-index: 4;
+      height: 94%;
+      width: auto;
+      object-fit: contain;
+      filter: drop-shadow(
+        0 20px 14px rgba(3,75,96,.15)
+      );
+      animation: productFloat 5s ease-in-out infinite;
+      transition: filter .4s ease;
+    }
+
+    .hero-product:hover {
+      animation-play-state: paused;
+      transform: translateY(-15px) rotate(4deg) scale(1.045);
+      filter: drop-shadow(
+        0 28px 20px rgba(3,75,96,.2)
+      );
+    }
+
+    .hero-coconut {
+      position: absolute;
+      z-index: 3;
+      font-size: clamp(85px, 13vw, 170px);
+      filter: drop-shadow(
+        0 12px 7px rgba(0,0,0,.1)
+      );
+      animation: drift 6s ease-in-out infinite;
+    }
+
+    .hero-coconut.left {
+      left: 9%;
+      bottom: 13%;
+      transform: rotate(-24deg);
+    }
+
+    .hero-coconut.right {
+      right: 9%;
+      bottom: 18%;
+      animation-delay: -2s;
+    }
+
+    .hero-leaf {
+      position: absolute;
+      z-index: 2;
+      font-size: clamp(36px, 6vw, 75px);
+      animation: drift 5s ease-in-out infinite;
+    }
+
+    .hero-leaf.a {
+      top: 12%;
+      right: 14%;
+      transform: rotate(30deg);
+    }
+
+    .hero-leaf.b {
+      bottom: 24%;
+      left: 15%;
+      animation-delay: -2s;
+    }
+
+    .hero-splash {
+      position: absolute;
+      z-index: 1;
+      left: 50%;
+      top: 43%;
+      width: min(680px, 90%);
+      height: 220px;
+      transform: translateX(-50%);
+      border: 18px solid rgba(255,255,255,.45);
+      border-top: 0;
+      border-radius: 10% 10% 50% 50%;
+      opacity: .8;
+    }
+
+    .droplet {
+      position: absolute;
+      background: rgba(255,255,255,.85);
+      border: 2px solid #78d2eb;
+      border-radius: 50%;
+      z-index: 2;
+      box-shadow:
+        inset -4px -4px 4px rgba(0,145,180,.2);
+      animation: drift 4s ease-in-out infinite;
+    }
+
+    .d1 {
+      width: 17px;
+      height: 17px;
+      left: 21%;
+      top: 25%;
+    }
+
+    .d2 {
+      width: 12px;
+      height: 12px;
+      right: 23%;
+      top: 35%;
+      animation-delay: -1s;
+    }
+
+    .d3 {
+      width: 24px;
+      height: 24px;
+      right: 14%;
+      top: 13%;
+      animation-delay: -2s;
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 6.4vw, 92px);
+      letter-spacing: .13em;
+      line-height: 1.05;
+      text-align: center;
+      margin: 0;
+      font-weight: 800;
+    }
+
+    .hero-subtitle {
+      text-align: center;
+      letter-spacing: .19em;
+      font-size: clamp(10px, 1.1vw, 15px);
+      font-weight: 700;
+      margin: 15px 0 0;
+    }
+
+    .swoosh {
+      display: block;
+      background: var(--pink);
+      height: 7px;
+      width: 155px;
+      border-radius: 80% 20% 60% 30%;
+      transform: rotate(-4deg);
+      margin: 23px auto 0;
+    }
+
+    /* FULL-WIDTH PHOTO GALLERY */
+
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      height: clamp(170px, 21vw, 315px);
+      overflow: hidden;
+    }
+
+    .gallery a {
+      display: block;
+      overflow: hidden;
+    }
+
+    .gallery img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .6s ease;
+    }
+
+    .gallery a:hover img {
+      transform: scale(1.08);
+    }
+
+    /* BENEFITS */
+
+    .benefits {
+      background: #fffdfa;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      gap: clamp(20px, 4vw, 80px);
+      padding: 90px clamp(28px, 7vw, 130px);
+      min-height: 640px;
+    }
+
+    .benefit-visual {
+      min-height: 480px;
+      display: grid;
+      place-items: center;
+      position: relative;
+    }
+
+    .benefit-visual img {
+      height: 460px;
+      width: auto;
+      position: relative;
+      z-index: 2;
+      filter: drop-shadow(
+        0 17px 14px rgba(3,75,96,.13)
+      );
+    }
+
+    .benefit-visual::before {
+      content: '🌴';
+      font-size: 210px;
+      position: absolute;
+      left: -8%;
+      top: 8%;
+      opacity: .68;
+      transform: rotate(-23deg);
+    }
+
+    .benefit-visual::after {
+      content: '🥥';
+      font-size: 150px;
+      position: absolute;
+      right: 2%;
+      bottom: 0;
+      z-index: 3;
+    }
+
+    .benefit-copy h2 {
+      font-family: 'Kalam', cursive;
+      font-size: clamp(40px, 5vw, 72px);
+      line-height: .96;
+      margin: 0 0 24px;
+      transform: rotate(-3deg);
+    }
+
+    .benefit-copy h2 span {
+      color: var(--pink);
+    }
+
+    .intro {
+      font-size: clamp(15px, 1.6vw, 19px);
+      line-height: 1.55;
+      max-width: 570px;
+      margin-bottom: 29px;
+    }
+
+    .benefit-list {
+      display: grid;
+      gap: 20px;
+    }
+
+    .benefit {
+      display: flex;
+      align-items: center;
+      gap: 19px;
+    }
+
+    .benefit-icon {
+      width: 58px;
+      height: 58px;
+      flex: none;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: #bceff2;
+      font-size: 29px;
+    }
+
+    .benefit h3 {
+      font-size: 16px;
+      letter-spacing: .035em;
+      margin: 0 0 3px;
+    }
+
+    .benefit p {
+      font-size: 14px;
+      line-height: 1.5;
+      margin: 0;
+    }
+
+    /* MINDANAO */
+
+    .origin {
+      position: relative;
+      min-height: 470px;
+      display: flex;
+      align-items: center;
+      background:
+        #bceaf3
+        url('assets/mindanao-illustrative.jpg')
+        center / cover no-repeat;
+    }
+
+    .origin::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        90deg,
+        rgba(188,234,243,.97) 0%,
+        rgba(188,234,243,.87) 26%,
+        rgba(188,234,243,.1) 65%
+      );
+    }
+
+    .origin-content {
+      position: relative;
+      max-width: 470px;
+      padding: 70px clamp(30px, 7vw, 120px);
+    }
+
+    .eyebrow {
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .24em;
+    }
+
+    .origin h2 {
+      font-family: 'Kalam', cursive;
+      font-size: clamp(44px, 5vw, 70px);
+      line-height: .92;
+      margin: 12px 0;
+    }
+
+    .origin .swoosh {
+      margin: 14px 0 23px;
+      width: 135px;
+    }
+
+    .origin p {
+      line-height: 1.6;
+      font-size: 16px;
+    }
+
+    /* MORE PRODUCTS */
+
+    .more {
+      padding: 62px 6vw 75px;
+      text-align: center;
+      background: var(--cream);
+    }
+
+    .more h2 {
+      font-size: clamp(16px, 2vw, 23px);
+      letter-spacing: .22em;
+      margin: 0 0 30px;
+    }
+
+    .more-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 35px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .more-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 25px;
+    }
+
+    .more-item img {
+      height: 160px;
+      width: 130px;
+      object-fit: contain;
+      transition: transform .3s;
+    }
+
+    .more-item:hover img {
+      transform: translateY(-8px) rotate(4deg);
+    }
+
+    .outline-link {
+      border: 1.5px solid var(--teal);
+      border-radius: 50px;
+      padding: 12px 22px;
+      font-size: 14px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
+
+    .more-item:hover .outline-link {
+      background: var(--teal);
+      color: white;
+    }
+
+    /* FOOTER */
+
+    .footer {
+      background: var(--teal);
+      color: white;
+      padding: 38px clamp(24px, 6vw, 100px);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .footer .brand::after {
+      border-color: white;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 28px;
+      flex-wrap: wrap;
+      font-size: 13px;
+      font-weight: 700;
+    }
+
+    .footer-social {
+      display: flex;
+      gap: 13px;
+    }
+
+    .footer-social a {
+      border: 1px solid white;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+    }
+
+    .footer-social a:hover {
+      background: var(--pink);
+    }
+
+    /* ANIMATIONS */
+
+    @keyframes productFloat {
+      0%, 100% {
+        transform: translateY(0) rotate(-2deg);
+      }
+      50% {
+        transform: translateY(-14px) rotate(1deg);
+      }
+    }
+
+    @keyframes drift {
+      0%, 100% {
+        translate: 0 0;
+      }
+      50% {
+        translate: 7px -13px;
+      }
+    }
+
+    /* MOBILE */
+
+    @media (max-width: 760px) {
+      .site-header {
+        padding: 20px 25px;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      .nav-cta {
+        display: none;
+      }
+
+      .nav-links {
+        display: none;
+        position: absolute;
+        top: 75px;
+        left: 16px;
+        right: 16px;
+        background: #fffefa;
+        padding: 25px;
+        border-radius: 18px;
+        box-shadow: 0 10px 25px #034b6020;
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .nav-links.open {
+        display: flex;
+      }
+
+      .hero {
+        min-height: 680px;
+        padding: 115px 16px 55px;
+      }
+
+      .hero-scene {
+        height: 390px;
+      }
+
+      .hero-product {
+        height: 87%;
+      }
+
+      .hero-coconut.left {
+        left: 0;
+        bottom: 12%;
+      }
+
+      .hero-coconut.right {
+        right: 0;
+        bottom: 17%;
+      }
+
+      .hero-splash {
+        height: 140px;
+        border-width: 9px;
+      }
+
+      .hero h1 {
+        font-size: clamp(34px, 8vw, 60px);
+        letter-spacing: .07em;
+      }
+
+      .hero-subtitle {
+        max-width: 330px;
+        line-height: 1.6;
+      }
+
+      .gallery {
+        grid-template-columns: repeat(2, 1fr);
+        height: auto;
+      }
+
+      .gallery a {
+        height: 180px;
+      }
+
+      .benefits {
+        grid-template-columns: 1fr;
+        padding: 55px 27px 70px;
+        gap: 20px;
+      }
+
+      .benefit-visual {
+        min-height: 360px;
+      }
+
+      .benefit-visual img {
+        height: 340px;
+      }
+
+      .benefit-visual::before {
+        font-size: 135px;
+        left: 5%;
+      }
+
+      .benefit-visual::after {
+        font-size: 100px;
+      }
+
+      .benefit-copy h2 {
+        text-align: center;
+      }
+
+      .origin {
+        min-height: 450px;
+        background-position: 62% center;
+      }
+
+      .origin::before {
+        background: linear-gradient(
+          90deg,
+          rgba(188,234,243,.97),
+          rgba(188,234,243,.45)
+        );
+      }
+
+      .origin-content {
+        padding: 60px 28px;
+        max-width: 340px;
+      }
+
+      .more-grid {
+        gap: 25px;
+      }
+
+      .more-item {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .more-item img {
+        height: 135px;
+      }
+
+      .outline-link {
+        padding: 10px 12px;
+        font-size: 12px;
+      }
+
+      .footer {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      .footer-links {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 430px) {
+      .hero-scene {
+        height: 335px;
+      }
+
+      .hero-product {
+        height: 88%;
+      }
+
+      .hero-coconut {
+        font-size: 77px;
+      }
+
+      .gallery a {
+        height: 145px;
+      }
+
+      .benefit {
+        gap: 12px;
+      }
+
+      .benefit-icon {
+        width: 49px;
+        height: 49px;
+        font-size: 24px;
+      }
+
+      .benefit h3 {
+        font-size: 14px;
+      }
+
+      .benefit p {
+        font-size: 13px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        animation: none !important;
+        transition: none !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+
+  <header class="site-header">
+    <a class="brand" href="index.html"
+       aria-label="Coco Cosmos home">
+      COCO<br>COSMOS
+    </a>
+
+    <button class="menu-toggle"
+            type="button"
+            aria-label="Toggle navigation"
+            aria-expanded="false">
+      ☰
+    </button>
+
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="index.html">Home</a>
+      <a href="index.html#products">Products</a>
+      <a href="about.html">About</a>
+      <a href="index.html#recipes">Recipes</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+
+    <a class="nav-cta" href="index.html#contact">
+      Find a Retailer
+    </a>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+
+    <section class="hero" aria-labelledby="product-title">
+
+      <div class="hero-scene">
+
+        <span class="hero-splash"
+              aria-hidden="true"></span>
+
+        <span class="hero-coconut left"
+              aria-hidden="true">🥥</span>
+
+        <span class="hero-coconut right"
+              aria-hidden="true">🥥</span>
+
+        <span class="hero-leaf a"
+              aria-hidden="true">🌿</span>
+
+        <span class="hero-leaf b"
+              aria-hidden="true">🍃</span>
+
+        <span class="droplet d1"
+              aria-hidden="true"></span>
+        <span class="droplet d2"
+              aria-hidden="true"></span>
+        <span class="droplet d3"
+              aria-hidden="true"></span>
+
+        <img
+          class="hero-product"
+          src="assets/coconut-water-original.png"
+          alt="Coco Cosmos Coconut Water 200 mL carton"
+          fetchpriority="high"
+        >
+
+      </div>
+
+      <h1 id="product-title">COCONUT WATER</h1>
+
+      <p class="hero-subtitle">
+        NATURALLY REFRESHING HYDRATION
+        STRAIGHT FROM THE COCONUT.
+      </p>
+
+      <span class="swoosh" aria-hidden="true"></span>
+
+    </section>
+
+    <!-- FULL WIDTH IMAGE GALLERY -->
+
+    <section class="gallery"
+             aria-label="Ways to enjoy coconut water">
+
+      <a href="#benefits"
+         aria-label="Coconut water refreshment">
+        <img
+          src="assets/gallery-1.jpg"
+          alt="Iced refreshing coconut drink"
+          loading="lazy"
+        >
+      </a>
+
+      <a href="#benefits"
+         aria-label="Coconut smoothie bowl">
+        <img
+          src="assets/gallery-2.jpg"
+          alt="Fruit and coconut smoothie bowl"
+          loading="lazy"
+        >
+      </a>
+
+      <a href="#benefits"
+         aria-label="Coconut mocktail">
+        <img
+          src="assets/gallery-3.jpg"
+          alt="Refreshing coconut mocktail"
+          loading="lazy"
+        >
+      </a>
+
+      <a href="#benefits"
+         aria-label="Frozen coconut treats">
+        <img
+          src="assets/gallery-4.jpg"
+          alt="Frozen tropical coconut treat"
+          loading="lazy"
+        >
+      </a>
+
+    </section>
+
+    <!-- WHY YOU'LL LOVE IT -->
+
+    <section class="benefits" id="benefits">
+
+      <div class="benefit-visual">
+
+        <img
+          src="assets/coconut-water-original.png"
+          alt="Coco Cosmos Coconut Water"
+          loading="lazy"
+        >
+
+      </div>
+
+      <div class="benefit-copy">
+
+        <h2>
+          WHY YOU'LL<br>
+          LOVE IT<span>.</span>
+        </h2>
+
+        <p class="intro">
+          Meet your tropical refreshment. Coco Cosmos
+          Coconut Water brings a naturally light,
+          refreshing coconut taste to your everyday
+          moments — whether you're taking a break,
+          heading outdoors or cooling down after
+          a workout.
+        </p>
+
+        <div class="benefit-list">
+
+          <div class="benefit">
+            <span class="benefit-icon"
+                  aria-hidden="true">✦</span>
+            <div>
+              <h3>NATURALLY REFRESHING</h3>
+              <p>
+                Enjoy the fresh, light taste of coconut water.
+              </p>
+            </div>
+          </div>
+
+          <div class="benefit">
+            <span class="benefit-icon"
+                  aria-hidden="true">💧</span>
+            <div>
+              <h3>MADE FOR EVERYDAY MOMENTS</h3>
+              <p>
+                A refreshing choice whenever you need
+                a tropical pause.
+              </p>
+            </div>
+          </div>
+
+          <div class="benefit">
+            <span class="benefit-icon"
+                  aria-hidden="true">🌿</span>
+            <div>
+              <h3>ONLY 3 INGREDIENTS</h3>
+              <p>
+                Simple ingredients, as highlighted on our pack.
+              </p>
+            </div>
+          </div>
+
+          <div class="benefit">
+            <span class="benefit-icon"
+                  aria-hidden="true">✦</span>
+            <div>
+              <h3>NO ARTIFICIAL FLAVOURS</h3>
+              <p>
+                Refreshment without artificial flavourings.
+              </p>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FROM MINDANAO -->
+
+    <section class="origin" aria-labelledby="origin-title">
+
+      <div class="origin-content">
+
+        <div class="eyebrow">
+          OUR SOURCE
+        </div>
+
+        <h2 id="origin-title">
+          FROM<br>MINDANAO
+        </h2>
+
+        <span class="swoosh" aria-hidden="true"></span>
+
+        <p>
+          Our coconut products begin with coconuts
+          sourced from Mindanao in the Philippines —
+          a tropical island known for its lush landscapes
+          and coconut-growing heritage.
+        </p>
+
+      </div>
+
+    </section>
+
+    <!-- EXPLORE MORE PRODUCTS -->
+
+    <section class="more">
+
+      <h2>
+        EXPLORE MORE COCO COSMOS PRODUCTS
+      </h2>
+
+      <div class="more-grid">
+
+        <a class="more-item" href="coconut-milk.html">
+
+          <img
+            src="assets/product-milk.png"
+            alt="Coco Cosmos Coconut Milk"
+            loading="lazy"
+          >
+
+          <span class="outline-link">
+            Coconut Milk &nbsp; →
+          </span>
+
+        </a>
+
+        <a class="more-item" href="coconut-oil.html">
+
+          <img
+            src="assets/product-oil.png"
+            alt="Coco Cosmos Coconut Oil"
+            loading="lazy"
+          >
+
+          <span class="outline-link">
+            Coconut Oil &nbsp; →
+          </span>
+
+        </a>
+
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+
+  <footer class="footer">
+
+    <a class="brand" href="index.html">
+      COCO<br>COSMOS
+    </a>
+
+    <nav class="footer-links"
+         aria-label="Footer navigation">
+
+      <a href="index.html">Home</a>
+      <a href="index.html#products">Products</a>
+      <a href="about.html">About</a>
+      <a href="index.html#recipes">Recipes</a>
+      <a href="index.html#contact">Contact</a>
+
+    </nav>
+
+    <div class="footer-social">
+
+      <a href="https://instagram.com"
+         aria-label="Instagram">◎</a>
+
+      <a href="https://facebook.com"
+         aria-label="Facebook">f</a>
+
+      <a href="https://youtube.com"
+         aria-label="YouTube">▶</a>
+
+    </div>
+
+  </footer>
+
+  <!-- JAVASCRIPT -->
+
+  <script>
+    const toggle = document.querySelector('.menu-toggle');
+    const nav = document.querySelector('.nav-links');
+
+    toggle.addEventListener('click', () => {
+      const open = nav.classList.toggle('open');
+
+      toggle.setAttribute(
+        'aria-expanded',
+        String(open)
+      );
+
+      toggle.textContent = open ? '×' : '☰';
+    });
+
+    nav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        nav.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.textContent = '☰';
+      });
+    });
+  </script>
+
+</body>
+</html>
+
