@@ -785,6 +785,122 @@
         scroll-behavior: auto !important;
       }
     }
+
+    
+/* =====================================
+   PHOTOREALISTIC HERO COMPOSITION
+===================================== */
+
+.hero-scene {
+  position: relative;
+  width: min(1100px, 100%);
+  height: 500px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  isolation: isolate;
+}
+
+/* Coconuts, leaves and water splash */
+.hero-decorations {
+  position: absolute;
+  z-index: 1;
+
+  width: 105%;
+  max-width: none;
+  height: auto;
+
+  left: 50%;
+  top: 52%;
+
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+
+  animation: decorationsFloat 8s ease-in-out infinite;
+}
+
+/* Original product in front */
+.hero-scene .hero-product {
+  position: relative;
+  z-index: 3;
+
+  height: 94%;
+  width: auto;
+  max-width: 55%;
+  object-fit: contain;
+
+  filter: drop-shadow(
+    0 20px 14px rgba(3,75,96,.15)
+  );
+
+  animation: productFloat 5s ease-in-out infinite;
+  transition: filter .4s ease;
+}
+
+/* Hover interaction */
+@media (hover: hover) {
+  .hero-scene .hero-product:hover {
+    animation-play-state: paused;
+    transform: translateY(-15px) rotate(4deg) scale(1.045);
+    filter: drop-shadow(
+      0 28px 20px rgba(3,75,96,.22)
+    );
+  }
+}
+
+/* Gentle background movement */
+@keyframes decorationsFloat {
+  0%, 100% {
+    transform: translate(-50%, -50%);
+  }
+
+  50% {
+    transform: translate(-50%, -52%);
+  }
+}
+
+/* MOBILE */
+@media (max-width: 760px) {
+  .hero-scene {
+    height: 390px;
+    width: 100%;
+  }
+
+  .hero-decorations {
+    width: 145%;
+    top: 54%;
+  }
+
+  .hero-scene .hero-product {
+    height: 87%;
+    max-width: 65%;
+  }
+}
+
+@media (max-width: 430px) {
+  .hero-scene {
+    height: 335px;
+  }
+
+  .hero-decorations {
+    width: 165%;
+  }
+
+  .hero-scene .hero-product {
+    height: 88%;
+    max-width: 68%;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .hero-decorations,
+  .hero-scene .hero-product {
+    animation: none !important;
+  }
+}
+
   </style>
 </head>
 
@@ -824,38 +940,27 @@
 
     <section class="hero" aria-labelledby="product-title">
 
-      <div class="hero-scene">
 
-        <span class="hero-splash"
-              aria-hidden="true"></span>
+<div class="hero-scene">
 
-        <span class="hero-coconut left"
-              aria-hidden="true">🥥</span>
+  <!-- Photorealistic coconuts, leaves and water splash -->
+  <img
+    class="hero-decorations"
+    src="assets/hero-decorations.png"
+    alt=""
+    aria-hidden="true"
+  >
 
-        <span class="hero-coconut right"
-              aria-hidden="true">🥥</span>
+  <!-- Original Coco Cosmos product packaging -->
+  <img
+    class="hero-product"
+    src="assets/coconut-water-original.png"
+    alt="Coco Cosmos Coconut Water 200 mL carton"
+    fetchpriority="high"
+  >
 
-        <span class="hero-leaf a"
-              aria-hidden="true">🌿</span>
+</div>
 
-        <span class="hero-leaf b"
-              aria-hidden="true">🍃</span>
-
-        <span class="droplet d1"
-              aria-hidden="true"></span>
-        <span class="droplet d2"
-              aria-hidden="true"></span>
-        <span class="droplet d3"
-              aria-hidden="true"></span>
-
-        <img
-          class="hero-product"
-          src="assets/coconut-water-original.png"
-          alt="Coco Cosmos Coconut Water 200 mL carton"
-          fetchpriority="high"
-        >
-
-      </div>
 
       <h1 id="product-title">COCONUT WATER</h1>
 
