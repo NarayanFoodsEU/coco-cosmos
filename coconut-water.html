@@ -185,17 +185,7 @@
       animation: drift 6s ease-in-out infinite;
     }
 
-    .hero-coconut.left {
-      left: 9%;
-      bottom: 13%;
-      transform: rotate(-24deg);
-    }
 
-    .hero-coconut.right {
-      right: 9%;
-      bottom: 18%;
-      animation-delay: -2s;
-    }
 
     .hero-leaf {
       position: absolute;
@@ -204,31 +194,7 @@
       animation: drift 5s ease-in-out infinite;
     }
 
-    .hero-leaf.a {
-      top: 12%;
-      right: 14%;
-      transform: rotate(30deg);
-    }
 
-    .hero-leaf.b {
-      bottom: 24%;
-      left: 15%;
-      animation-delay: -2s;
-    }
-
-    .hero-splash {
-      position: absolute;
-      z-index: 1;
-      left: 50%;
-      top: 43%;
-      width: min(680px, 90%);
-      height: 220px;
-      transform: translateX(-50%);
-      border: 18px solid rgba(255,255,255,.45);
-      border-top: 0;
-      border-radius: 10% 10% 50% 50%;
-      opacity: .8;
-    }
 
     .droplet {
       position: absolute;
@@ -241,28 +207,6 @@
       animation: drift 4s ease-in-out infinite;
     }
 
-    .d1 {
-      width: 17px;
-      height: 17px;
-      left: 21%;
-      top: 25%;
-    }
-
-    .d2 {
-      width: 12px;
-      height: 12px;
-      right: 23%;
-      top: 35%;
-      animation-delay: -1s;
-    }
-
-    .d3 {
-      width: 24px;
-      height: 24px;
-      right: 14%;
-      top: 13%;
-      animation-delay: -2s;
-    }
 
     .hero h1 {
       font-size: clamp(42px, 6.4vw, 92px);
@@ -335,34 +279,17 @@
       position: relative;
     }
 
-    .benefit-visual img {
-      height: 460px;
-      width: auto;
-      position: relative;
-      z-index: 2;
-      filter: drop-shadow(
-        0 17px 14px rgba(3,75,96,.13)
-      );
-    }
 
-    .benefit-visual::before {
-      content: '🌴';
-      font-size: 210px;
-      position: absolute;
-      left: -8%;
-      top: 8%;
-      opacity: .68;
-      transform: rotate(-23deg);
-    }
+.benefit-visual img {
+  width: 100%;
+  max-width: 650px;
+  height: auto;
+  object-fit: contain;
+  position: relative;
+  z-index: 2;
+}
 
-    .benefit-visual::after {
-      content: '🥥';
-      font-size: 150px;
-      position: absolute;
-      right: 2%;
-      bottom: 0;
-      z-index: 3;
-    }
+
 
     .benefit-copy h2 {
       font-family: 'Kalam', cursive;
@@ -901,6 +828,15 @@
   }
 }
 
+    
+@media (max-width: 760px) {
+  .benefit-visual img {
+    width: 100%;
+    height: auto;
+    max-width: 500px;
+  }
+}
+
   </style>
 </head>
 
@@ -909,10 +845,13 @@
   <!-- HEADER -->
 
   <header class="site-header">
-    <a class="brand" href="index.html"
-       aria-label="Coco Cosmos home">
-      COCO<br>COSMOS
-    </a>
+
+<a href="index.html" aria-label="Coco Cosmos home">
+  <img src="assets/logo.png"
+       alt="Coco Cosmos"
+       style="width:140px;height:auto;">
+</a>
+
 
     <button class="menu-toggle"
             type="button"
@@ -1022,13 +961,13 @@
 
       <div class="benefit-visual">
 
-        <img
-          src="assets/coconut-water-original.png"
-          alt="Coco Cosmos Coconut Water"
-          loading="lazy"
-        >
+  <img
+    src="assets/benefits-composition.png"
+    alt="Coco Cosmos Coconut Water with fresh coconuts and tropical leaves"
+    loading="lazy"
+  >
+</div>
 
-      </div>
 
       <div class="benefit-copy">
 
@@ -1172,9 +1111,13 @@
 
   <footer class="footer">
 
-    <a class="brand" href="index.html">
-      COCO<br>COSMOS
-    </a>
+
+<a href="index.html" aria-label="Coco Cosmos home">
+  <img src="assets/logo.png"
+       alt="Coco Cosmos"
+       style="width:140px;height:auto;">
+</a>
+
 
     <nav class="footer-links"
          aria-label="Footer navigation">
